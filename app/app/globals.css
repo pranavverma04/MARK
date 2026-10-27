@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+/* MARK tokens. The world is a government file room: warm manila paper, ink-blue
+   pen, a stamp seal. Not a dark SaaS canvas. Accent (official stamp ink) appears
+   in rare doses: the call to action, focus rings, the seal. */
+:root {
+  --paper: #efe8da;
+  --paper-2: #e7dfcd;
+  --paper-3: #ddd3bd;
+  --sheet: rgba(255, 252, 245, 0.74);
+  --sheet-strong: rgba(255, 252, 245, 0.92);
+  --ink: #1c2541;
+  --ink-2: #3a4466;
+  --text: #1c2541;
+  --text-2: #4b5474;
+  --text-3: #7a819c;
+  --line: rgba(28, 37, 65, 0.14);
+  --line-strong: rgba(28, 37, 65, 0.3);
+  --accent: #2f45c4;
+  --accent-hover: #2639a8;
+  --accent-muted: rgba(47, 69, 196, 0.14);
+  --seal: #b23a2f;
+  --seal-muted: rgba(178, 58, 47, 0.14);
+  --ok: #2e7d5b;
+  --ok-muted: rgba(46, 125, 91, 0.14);
+  --warn: #b8760f;
+  --warn-muted: rgba(184, 118, 15, 0.16);
+  --bad: #b23a2f;
+  --bad-muted: rgba(178, 58, 47, 0.14);
+  --graphite: #5b5f6b;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-seal: var(--seal);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  color-scheme: light;
+  background: var(--paper);
+}
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--accent-muted);
+  color: var(--ink);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 96;
+  }
+  .mono {
+    font-family: var(--font-mono), ui-monospace, monospace;
+  }
+  .kicker {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  /* Paper sheets. Slightly translucent so the environment shows through. */
+  .sheet {
+    background: var(--sheet);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(14px) saturate(1.05);
+    -webkit-backdrop-filter: blur(14px) saturate(1.05);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.6) inset,
+      0 18px 50px rgba(28, 37, 65, 0.08),
+      0 1px 2px rgba(28, 37, 65, 0.06);
+  }
+  .sheet-strong {
+    background: var(--sheet-strong);
+    border: 1px solid var(--line-strong);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 24px 60px rgba(28, 37, 65, 0.12),
+      0 1px 2px rgba(28, 37, 65, 0.08);
+  }
+  .ink-sheet {
+    background: linear-gradient(180deg, #1f2949, #182039);
+    color: #f3efe6;
+    border: 1px solid rgba(243, 239, 230, 0.12);
+    box-shadow: 0 24px 60px rgba(28, 37, 65, 0.28);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.66rem 1.2rem;
+    font-weight: 500;
+    font-size: 0.92rem;
+    line-height: 1.1;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 252, 245, 0.6);
+    color: var(--ink);
+    cursor: pointer;
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      background 0.25s,
+      border-color 0.25s,
+      box-shadow 0.25s;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    background: rgba(255, 252, 245, 0.95);
+    border-color: var(--ink-2);
+    transform: translateY(-1px);
+  }
+  .btn:active {
+    transform: translateY(0) scale(0.985);
+  }
+  .btn-accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fbf9f3;
+    box-shadow: 0 10px 26px rgba(47, 69, 196, 0.28);
+  }
+  .btn-accent:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+    color: #fff;
+  }
+  .btn-ink {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #f3efe6;
+  }
+  .btn-ink:hover {
+    background: #26314f;
+    border-color: #26314f;
+    color: #fff;
+  }
+  .btn-ghost {
+    background: transparent;
+    border-color: transparent;
+  }
+  .btn-ghost:hover {
+    background: rgba(28, 37, 65, 0.06);
+    border-color: transparent;
+  }
+  .btn-sm {
+    padding: 0.42rem 0.85rem;
+    font-size: 0.8rem;
+  }
+  @media (pointer: coarse) {
+    .btn {
+      min-height: 44px;
+    }
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    padding: 0.18rem 0.6rem;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .badge-ok { background: var(--ok-muted); color: var(--ok); border-color: rgba(46,125,91,0.25); }
+  .badge-warn { background: var(--warn-muted); color: var(--warn); border-color: rgba(184,118,15,0.3); }
+  .badge-bad { background: var(--bad-muted); color: var(--bad); border-color: rgba(178,58,47,0.3); }
+  .badge-ink { background: rgba(28,37,65,0.08); color: var(--ink-2); border-color: var(--line); }
+  .badge-accent { background: var(--accent-muted); color: var(--accent); border-color: rgba(47,69,196,0.3); }
+
+  /* The rubber stamp. Rotated, slightly uneven ink, used for verdicts. */
+  .stamp {
+    display: inline-block;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 2px solid currentColor;
+    border-radius: 6px;
+    padding: 0.3rem 0.7rem;
+    transform: rotate(-6deg);
+    mix-blend-mode: multiply;
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -0.6 1.25'/></filter><rect width='200' height='200' fill='white'/><rect width='200' height='200' filter='url(%23n)' opacity='0.55'/></svg>");
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -0.6 1.25'/></filter><rect width='200' height='200' fill='white'/><rect width='200' height='200' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+
+  .hairline { border-color: var(--line); }
+  .rule { height: 1px; background: var(--line); }
+
+  /* Ledger rows */
+  .row-hover { transition: background 0.2s; }
+  .row-hover:hover { background: rgba(28, 37, 65, 0.045); }
+
+  /* Inputs */
+  .input {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 252, 245, 0.7);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.92rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-muted); }
+  .input::placeholder { color: var(--text-3); }
+
+  .tab {
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.84rem;
+    color: var(--text-2);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .tab:hover { color: var(--ink); background: rgba(28,37,65,0.05); }
+  .tab[data-active="true"] { background: var(--ink); color: #f3efe6; border-color: var(--ink); }
+
+  .scroll-x { overflow-x: auto; scrollbar-width: none; }
+  .scroll-x::-webkit-scrollbar { display: none; }
+}
+
+/* Paper grain over everything, very quiet. */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .grain::before { display: none; }
+}
