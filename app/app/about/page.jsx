@@ -1,36 +1,32 @@
 "use client";
-
 import Link from "next/link";
 import { motion } from "motion/react";
 import Logo from "@/components/Logo";
 import { EASE, Kicker, PageHead, Panel, Reveal } from "@/components/ui";
-
 const EDGE = [
-  { t: "Cross-institution graph", d: "Most teams check one file. MARK checks the file against every other file in the country. That is where ghost faculty live." },
-  { t: "External truth, not only internal checks", d: "EPFO says who is paid. ICAI says which UDIN exists. Bhuvan says how big the campus is. A document cannot argue with those." },
-  { t: "Rules you can cite", d: "The handbook as versioned code, each rule with its clause. The score is explainable to a committee and to a court." },
-  { t: "Both sides of the counter", d: "Reviewers get a copilot and a letter. Institutions get a rehearsal. Fewer cycles for everyone." },
-  { t: "A chain, not a log", d: "Every decision hashed to the previous one. Human in the loop always; the machine proposes, a person decides, and the record shows both." },
-  { t: "Language that keeps trust", d: "MARK never says fraud. It says discrepancy, unverified, needs a fresh copy. A question, not a verdict." },
+    { t: "Cross-institution graph", d: "Most teams check one file. MARK checks the file against every other file in the country. That is where ghost faculty live." },
+    { t: "External truth, not only internal checks", d: "EPFO says who is paid. ICAI says which UDIN exists. Bhuvan says how big the campus is. A document cannot argue with those." },
+    { t: "Rules you can cite", d: "The handbook as versioned code, each rule with its clause. The score is explainable to a committee and to a court." },
+    { t: "Both sides of the counter", d: "Reviewers get a copilot and a letter. Institutions get a rehearsal. Fewer cycles for everyone." },
+    { t: "A chain, not a log", d: "Every decision hashed to the previous one. Human in the loop always; the machine proposes, a person decides, and the record shows both." },
+    { t: "Language that keeps trust", d: "MARK never says fraud. It says discrepancy, unverified, needs a fresh copy. A question, not a verdict." },
 ];
 const ARCH = [
-  ["Intake", "Portal pull, DigiLocker, drag-and-drop · MinIO object store"],
-  ["Reading", "Classifier → OCR (Indic) → layout extraction → fields with page and box"],
-  ["Validation", "Cross-document consistency, completeness, dates in cycle"],
-  ["Authentication", "Forensics (ELA, copy-move, fonts, metadata, synthetic) · registries (UDIN, EPFO, NAD, Bhulekh, NOC) · satellite and EXIF geo"],
-  ["Faculty graph", "PostgreSQL + Neo4j · PAN/DOB/degree/face match · timeline overlap"],
-  ["Compliance", "Handbook rules-as-code, versioned per cycle, LLM-drafted, human-approved"],
-  ["Score and copilot", "Weighted, explained, evidence-linked · LLM grounded in the file for chat and letters"],
-  ["Governance", "SHA-256 audit chain · DPDP controls · bias guard · reviewer feedback loop"],
+    ["Intake", "Portal pull, DigiLocker, drag-and-drop · MinIO object store"],
+    ["Reading", "Classifier → OCR (Indic) → layout extraction → fields with page and box"],
+    ["Validation", "Cross-document consistency, completeness, dates in cycle"],
+    ["Authentication", "Forensics (ELA, copy-move, fonts, metadata, synthetic) · registries (UDIN, EPFO, NAD, Bhulekh, NOC) · satellite and EXIF geo"],
+    ["Faculty graph", "PostgreSQL + Neo4j · PAN/DOB/degree/face match · timeline overlap"],
+    ["Compliance", "Handbook rules-as-code, versioned per cycle, LLM-drafted, human-approved"],
+    ["Score and copilot", "Weighted, explained, evidence-linked · LLM grounded in the file for chat and letters"],
+    ["Governance", "SHA-256 audit chain · DPDP controls · bias guard · reviewer feedback loop"],
 ];
-
 export default function About() {
-  return (
-    <main id="main" tabIndex={-1}>
-      <PageHead kicker="AI-powered application validation · document authentication · regulatory compliance verification" title={<>What MARK sees that a <span style={{ color: "var(--accent)" }}>single file</span> cannot.</>} lede="AICTE approves thousands of institutions every cycle from paper: affidavits, deeds, faculty lists, CA certificates, photographs. Scrutiny is slow and uneven, and the same professor can appear on three payrolls without anyone noticing. MARK reads the file, proves each document, checks the handbook, finds the ghost, and shows the reviewer why." />
+    return (<main id="main" tabIndex={-1}>
+      <PageHead kicker="AI-powered application validation · document authentication · regulatory compliance verification" title={<>What MARK sees that a <span style={{ color: "var(--accent)" }}>single file</span> cannot.</>} lede="AICTE approves thousands of institutions every cycle from paper: affidavits, deeds, faculty lists, CA certificates, photographs. Scrutiny is slow and uneven, and the same professor can appear on three payrolls without anyone noticing. MARK reads the file, proves each document, checks the handbook, finds the ghost, and shows the reviewer why."/>
       <Reveal delay={0.1}>
         <Panel ink className="mb-6 flex flex-col items-center gap-4 p-8 text-center md:flex-row md:text-left">
-          <Logo className="h-16 w-auto shrink-0" color="#f3efe6" seal="#8fa0ff" />
+          <Logo className="h-16 w-auto shrink-0" color="#f3efe6" seal="#8fa0ff"/>
           <div><div className="display text-2xl" style={{ fontWeight: 700 }}>Multi-source Authentication and Regulatory Knowledge</div><div className="mt-1 text-sm" style={{ color: "rgba(243,239,230,0.75)" }}>Or simply: the mark an application earns when it is real.</div></div>
         </Panel>
       </Reveal>
@@ -57,6 +53,5 @@ export default function About() {
           </ol>
         </Panel>
       </Reveal>
-    </main>
-  );
+    </main>);
 }
